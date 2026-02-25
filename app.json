@@ -14,7 +14,16 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fitai.app",
+      "infoPlist": {
+        "NSHealthShareUsageDescription": "FitAI reads your activity and calorie data to calculate your daily energy expenditure and track your deficit.",
+        "NSHealthUpdateUsageDescription": "FitAI may write nutrition data back to Apple Health."
+      },
+      "entitlements": {
+        "com.apple.developer.healthkit": true,
+        "com.apple.developer.healthkit.access": []
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +31,8 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.fitai.app"
     },
     "web": {
       "bundler": "metro",
@@ -30,10 +40,21 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "react-native-health",
+        {
+          "isClinicalDataAccessEnabled": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "supabaseUrl": "",
+      "supabaseAnonKey": "",
+      "usdaApiKey": "DEMO_KEY"
     }
   }
 }
